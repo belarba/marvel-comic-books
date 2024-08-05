@@ -11,7 +11,7 @@ class MarvelService
       apikey: @public_key,
       ts: @timestamp,
       hash: @hash,
-      limit: 5
+      limit: 15
     }
   end
 

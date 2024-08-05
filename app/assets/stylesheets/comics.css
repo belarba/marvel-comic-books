@@ -1,0 +1,79 @@
+body {
+  margin: 0;
+  padding-top: 80px;
+}
+
+header {
+  background-color: red;
+  padding: 20px;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.comic-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  padding: 20px;
+  margin-top: 100px;
+}
+
+.comic {
+  position: relative;
+}
+
+.comic-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.comic-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.comic-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: black;
+  padding: 10px;
+  text-align: center;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.comic-image:hover .comic-title {
+  transform: translateY(0);
+}
+
+.favorite-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+}
+
+.favorite-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.favorite-icon {
+  width: 30px;
+  height: 30px;
+  transition: all 0.3s ease;
+}
+
+.comic-image:hover .favorite-icon {
+  content: url('/assets/heart_hover.png');
+}

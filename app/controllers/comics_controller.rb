@@ -8,13 +8,25 @@ class ComicsController < ApplicationController
               end
 
     Rails.logger.debug "Comics response: #{@comics.inspect}"
+    Rails.logger.info "Current favorites: #{session[:favorites].inspect}"
   end
 
   def favorite
-    p "entrou no favorite"
-    comic_id = params[:comic_id]
-    Favorite.create(comic_id: comic_id)
-    flash[:notice] = "Comic #{comic_id} favorited!"
-    redirect_to comics_path
+    comic_id = params[:id]
+    session[:favorites] ||= []
+
+    if session[:favorites].include?(comic_id.to_i)
+      session[:favorites].delete(comic_id.to_i)
+      icon = 'heart_off.png'
+    else
+      session[:favorites] << comic_id.to_i
+      icon = 'heart_on.png'
+    end
+
+    respond_to do |format|
+      format.html { redirect_to comics_path }
+      format.json { render json: { icon: icon } }
+    end
   end
+
 end

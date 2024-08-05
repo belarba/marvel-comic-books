@@ -1,17 +1,24 @@
-<h1>Comics</h1>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marvel Comic Books</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'comics', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <%= render 'header' %>
 
-<%= form_with url: comics_path, method: :get, local: true do |form| %>
-  <div>
-    <%= form.label :character, 'Search by Character:' %>
-    <%= form.text_field :character %>
-    <%= form.submit 'Search' %>
+  <div class="comic-container">
+    <% if @comics && @comics["data"] && @comics["data"]["results"] %>
+      <% @comics["data"]["results"].each do |comic| %>
+        <%= render 'comic', comic: comic %>
+      <% end %>
+    <% else %>
+      <p>No comics found or API error: <%= @comics["message"] %>.</p>
+    <% end %>
   </div>
-<% end %>
-
-<% @comics["data"]["results"].each do |comic| %>
-  <div>
-    <h3><%= comic["title"] %></h3>
-    <img src="<%= comic["thumbnail"]["path"] %>.jpg" alt="<%= comic["title"] %> Cover" />
-    <%= button_to 'Favorite', favorite_comic_path(comic["id"]), method: :post %>
-  </div>
-<% end %>
+</body>
+</html>
