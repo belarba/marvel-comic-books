@@ -1,0 +1,8 @@
+<h1>Comics</h1>
+
+<% @comics["data"]["results"].each do |comic| %>
+  <div>
+    <h3><%= comic["title"] %></h3>
+    <img src="<%= comic["thumbnail"]["path"] %>.jpg" alt="<%= comic["title"] %> Cover" />
+  </div>
+<% end %>
