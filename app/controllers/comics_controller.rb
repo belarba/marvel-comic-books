@@ -9,4 +9,12 @@ class ComicsController < ApplicationController
 
     Rails.logger.debug "Comics response: #{@comics.inspect}"
   end
+
+  def favorite
+    p "entrou no favorite"
+    comic_id = params[:comic_id]
+    Favorite.create(comic_id: comic_id)
+    flash[:notice] = "Comic #{comic_id} favorited!"
+    redirect_to comics_path
+  end
 end

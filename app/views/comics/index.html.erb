@@ -12,5 +12,6 @@
   <div>
     <h3><%= comic["title"] %></h3>
     <img src="<%= comic["thumbnail"]["path"] %>.jpg" alt="<%= comic["title"] %> Cover" />
+    <%= button_to 'Favorite', favorite_comic_path(comic["id"]), method: :post %>
   </div>
 <% end %>
