@@ -15,8 +15,10 @@ class MarvelService
     }
   end
 
-  def comics(offset = 0)
+  def comics(page = 0)
+    offset = page * 15
     cache_key = "marvel_comics_#{offset}"
+
     Rails.cache.fetch(cache_key, expires_in: 1.day) do
       options = { query: @base_query.merge(offset: offset) }
       response = self.class.get('/comics', options)
@@ -25,7 +27,8 @@ class MarvelService
     end
   end
 
-  def character_id(name)
+  def character_id(name, page = 0)
+    offset = page * 15
     cache_key = "marvel_character_id_#{name}"
     Rails.cache.fetch(cache_key, expires_in: 1.day) do
       options = { query: @base_query.merge(name: name) }
@@ -43,8 +46,6 @@ class MarvelService
   end
 
   def character_comics(id, offset = 0)
-    p "entrou no character comicsdddddd"
-    p id
     cache_key = "marvel_character_comics_#{id}_#{offset}"
     Rails.cache.fetch(cache_key, expires_in: 1.day) do
       options = { query: @base_query.merge(offset: offset) }

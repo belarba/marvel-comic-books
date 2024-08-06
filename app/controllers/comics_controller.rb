@@ -1,10 +1,11 @@
 class ComicsController < ApplicationController
   def index
+    @page = params[:page].to_i || 0
     @comics = if params[:character]
                 character_id = MarvelService.new.character_id(params[:character])
-                character_id ? MarvelService.new.character_comics(character_id) : { 'data' => { 'results' => [] } }
+                character_id ? MarvelService.new.character_comics(character_id, @page) : { 'data' => { 'results' => [] } }
               else
-                MarvelService.new.comics
+                MarvelService.new.comics(@page)
               end
 
     Rails.logger.debug "Comics response: #{@comics.inspect}"
