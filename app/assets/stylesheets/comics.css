@@ -1,6 +1,8 @@
 body {
   margin: 0;
   padding-top: 80px;
+  background-color: black;
+  color: white;
 }
 
 header {
@@ -29,6 +31,8 @@ header {
 .comic-image {
   position: relative;
   overflow: hidden;
+  margin: 10px;
+  transition: all 0.3s ease-in-out;
 }
 
 .comic-image img {
@@ -72,6 +76,17 @@ header {
   width: 30px;
   height: 30px;
   transition: all 0.3s ease;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.comic-image:hover {
+  border-bottom: 5px solid red;
+}
+
+.comic-image.favorite {
+  border: 5px solid red;
 }
 
 .comic-image:hover .favorite-icon {

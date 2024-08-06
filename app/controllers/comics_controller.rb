@@ -28,5 +28,4 @@ class ComicsController < ApplicationController
       format.json { render json: { icon: icon } }
     end
   end
-
 end

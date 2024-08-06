@@ -1,7 +1,7 @@
 <% favorite_icon = session[:favorites]&.include?(comic["id"].to_i) ? 'heart_on.png' : 'heart_off.png' %>
 
 <div class="comic">
-  <div class="comic-image">
+  <div class="comic-image <%= 'favorite' if session[:favorites]&.include?(comic["id"].to_i) %>">
     <img src="<%= comic["thumbnail"]["path"] %>.jpg" alt="<%= comic["title"] %> Cover" />
     <div class="favorite-button" data-comic-id="<%= comic['id'] %>">
       <%= link_to image_tag(favorite_icon, alt: 'Favorite', class: 'favorite-icon', id: "favorite-icon-#{comic['id']}"), favorite_comic_path(comic["id"]), method: :post, remote: true, class: 'favorite-btn' %>
