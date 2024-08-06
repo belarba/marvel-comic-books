@@ -1,27 +1,3 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 # Marvel Comics App
 
 This project is a Rails application that interacts with the Marvel API to fetch information about comics and characters.
@@ -37,7 +13,7 @@ This project is a Rails application that interacts with the Marvel API to fetch 
 
 ## Installation
 
-To get started with the application, you need to have Ruby and Rails installed on your machine. Follow the steps below:
+To get started with the application, you must install Ruby and Rails on your machine. Follow the steps below:
 
 1. **Clone the repository:**
     ```bash
@@ -52,7 +28,7 @@ To get started with the application, you need to have Ruby and Rails installed o
 
 ## Configuration
 
-You need to set up the Marvel API keys to interact with the API. Follow the steps below:
+You must set up the Marvel API keys to interact with the API. Follow the steps below:
 
 1. **Create `.env` file:**
     ```bash
@@ -92,8 +68,8 @@ Visit `http://localhost:3000` in your web browser to access the application.
   ```
 **Mocking API Requests**
 
-This projects uses [Webmock](https://github.com/bblimke/webmock) to mock API durubg testing. The test suite includes tests for `MarvelService` and `ComicsController`.
+This project uses [Webmock](https://github.com/bblimke/webmock) to mock API durubg testing. The test suite includes tests for `MarvelService` and `ComicsController`.
 
 ## API Rate Limiting
 
-To handle API rate limiting, the application implements caching for the API responses using [Rails Cache](https://guides.rubyonrails.org/caching_with_rails.html). Additionally, consider implementing retry lofic with exponential backoff.
+To handle API rate limiting, the application implements caching for the API responses using [Rails Cache](https://guides.rubyonrails.org/caching_with_rails.html).
