@@ -1,4 +1,4 @@
 <div class="pagination">
-  <%= link_to 'PREVIOUS PAGE', comics_path(page: @page - 1), class: "pagination-link previous #{'disabled' if @page <= 0}" %>
-  <%= link_to 'NEXT PAGE', comics_path(page: @page + 1), class: 'pagination-link next' %>
+  <%= link_to 'PREVIOUS PAGE', comics_path(page: @page - 1, character: @character), class: "pagination-link previous #{'disabled' if @page <= 0}" %>
+  <%= link_to 'NEXT PAGE', comics_path(page: @page + 1, character: @character), class: 'pagination-link next' %>
 </div>

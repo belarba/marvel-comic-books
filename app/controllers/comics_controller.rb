@@ -1,5 +1,6 @@
 class ComicsController < ApplicationController
   def index
+    @character = params[:character] if params[:character].present?
     @page = params[:page].to_i || 0
     @comics = if params[:character]
                 character_id = MarvelService.new.character_id(params[:character])
